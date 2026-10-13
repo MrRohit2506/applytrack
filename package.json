@@ -1,0 +1,25 @@
+{
+  "name": "applytrack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ApplyTrack - job application tracker (Phase 1: foundation and authentication)",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "start": "npm --prefix server start",
+    "test": "npm --prefix server test && npm --prefix client test",
+    "test:server": "npm --prefix server test",
+    "test:client": "npm --prefix client test",
+    "build": "npm --prefix client run build",
+    "lint": "npm --prefix server run lint && npm --prefix client run lint",
+    "check:env": "npm --prefix server run check:env",
+    "smoke": "npm --prefix server run smoke --",
+    "audit": "npm --prefix server audit --omit=dev --audit-level=high && npm --prefix client audit --omit=dev --audit-level=high",
+    "audit:all": "npm --prefix server audit && npm --prefix client audit",
+    "verify": "npm run lint && npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

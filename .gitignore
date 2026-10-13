@@ -1,0 +1,33 @@
+# dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+
+# secrets and local configuration (only the *.example templates are tracked)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+.vercel/
+.render/
+
+# data and artefacts that can contain private records
+*.log
+*.csv
+!**/fixtures/*.csv
+*.bson
+*.dump
+dump/
+mongodb-binaries/
+.mongodb-binaries/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

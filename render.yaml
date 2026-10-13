@@ -1,0 +1,29 @@
+# Render Blueprint for the API. NOTHING is deployed until you create/sync it in your Render account.
+# Secrets are never stored here: `sync: false` makes Render ask for them in the dashboard.
+services:
+  - type: web
+    name: applytrack-api
+    runtime: node
+    rootDir: server
+    plan: free # free instances sleep when idle (slow first request); choose a paid plan yourself if you need always-on
+    buildCommand: npm install --omit=dev # switch to `npm ci --omit=dev` once package-lock.json is committed
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI # Atlas connection string WITH the database name, e.g. .../applytrack?retryWrites=true&w=majority
+        sync: false
+      - key: CLIENT_ORIGIN # exact https origin of the frontend, e.g. https://your-app.vercel.app (no trailing slash/path)
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CSRF_SECRET
+        generateValue: true
+      - key: TRUST_PROXY # number of proxies in front of the app; see README "Deployment" before changing
+        value: "1"
+      - key: COOKIE_SAMESITE # lax = same-site/proxied frontend (recommended); none = cross-site frontend (see README)
+        value: lax
