@@ -6,8 +6,7 @@ coverage/
 .vite/
 
 # secrets and local configuration (only the *.example templates are tracked)
-.env
-.env.*
+
 !.env.example
 *.pem
 *.key
